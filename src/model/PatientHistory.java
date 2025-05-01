@@ -30,11 +30,6 @@ public class PatientHistory implements MedicalRecord {
     }
 
     @Override
-    public MedicalRecord clone() {
-        return new PatientHistory(this.historyDetails);
-    }
-
-    @Override
     public String getDetails() {
         return historyDetails;
     }

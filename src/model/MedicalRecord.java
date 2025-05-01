@@ -10,10 +10,7 @@ package model;
  * @author hadeerw
  */
 // File: MedicalRecord.java
-// Pattern: Prototype Pattern
 public interface MedicalRecord {
     void display();
-    MedicalRecord clone();
-
     String getDetails();
 }

@@ -35,7 +35,6 @@ import factory.MedicalRecordFactory;
 
 // Service imports
 import service.AppointmentScheduler;
-import service.PatientBuilder;
 
 // Database imports
 import repository.DatabaseManager;

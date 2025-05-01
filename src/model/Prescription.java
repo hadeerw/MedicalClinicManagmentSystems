@@ -30,11 +30,6 @@ public class Prescription implements MedicalRecord {
     }
 
     @Override
-    public MedicalRecord clone() {
-        return new Prescription(this.prescriptionDetails);
-    }
-
-    @Override
     public String getDetails() {
         return prescriptionDetails;
     }

@@ -25,11 +25,6 @@ public class GeneralMedicalRecord implements MedicalRecord {
     }
 
     @Override
-    public MedicalRecord clone() {
-        return new GeneralMedicalRecord(this.description);
-    }
-
-    @Override
     public String getDetails() {
         return description;
     }

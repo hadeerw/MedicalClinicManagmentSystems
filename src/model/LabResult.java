@@ -25,9 +25,6 @@ public class LabResult implements MedicalRecord {
         setUnit(unit);
     }
 
-    // Default Constructor for cloning
-    public LabResult() {}
-
     @Override
     public void display() {
         System.out.println("Lab Result:");
@@ -36,8 +33,8 @@ public class LabResult implements MedicalRecord {
     }
 
     @Override
-    public MedicalRecord clone() {
-        return new LabResult(this.testName, this.resultValue, this.unit);
+    public String getDetails() {
+        return String.format("Test: %s, Value: %s %s", testName, resultValue, unit);
     }
 
     // Getters and Setters with validation
@@ -72,10 +69,5 @@ public class LabResult implements MedicalRecord {
             throw new IllegalArgumentException("Unit cannot be null or empty.");
         }
         this.unit = unit;
-    }
-
-    @Override
-    public String getDetails() {
-        return String.format("Test: %s, Value: %s %s", testName, resultValue, unit);
     }
 }

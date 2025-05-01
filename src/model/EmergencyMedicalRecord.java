@@ -24,11 +24,6 @@ public class EmergencyMedicalRecord implements MedicalRecord {
     }
 
     @Override
-    public MedicalRecord clone() {
-        return new EmergencyMedicalRecord(this.details);
-    }
-
-    @Override
     public String getDetails() {
         return details;
     }
