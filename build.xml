@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="MedicalClinicManagmentSystems" default="compile" basedir=".">
+    <description>Medical Clinic Management System Build File</description>
+    
+    <!-- Define project properties -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="sqlite.version" value="3.47.1.0"/>
+    
+    <!-- Define classpaths -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    
+    <!-- Create required directories -->
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+    </target>
+    
+    <!-- Download SQLite JDBC driver if not present -->
+    <target name="get-dependencies" depends="init">
+        <get src="https://github.com/xerial/sqlite-jdbc/releases/download/${sqlite.version}/sqlite-jdbc-${sqlite.version}.jar"
+             dest="${lib.dir}/sqlite-jdbc-${sqlite.version}.jar"
+             skipexisting="true"/>
+    </target>
+    
+    <!-- Compile the project -->
+    <target name="compile" depends="get-dependencies">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+    
+    <!-- Clean build files -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+    
+    <!-- Run the application -->
+    <target name="run" depends="compile">
+        <java classname="main.java.main" fork="true">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${classes.dir}"/>
+            </classpath>
+        </java>
+    </target>
+</project>
